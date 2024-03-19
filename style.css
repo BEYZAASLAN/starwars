@@ -1,0 +1,84 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(2, 0, 36);
+  background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgb(48, 52, 52) 100%);
+}
+
+@keyframes floating {
+
+  0%,
+  100% {
+    transform: skewY(-7deg) translate(0, -20px);
+  }
+
+  50% {
+    transform: skewY(-7deg) translate(0, -20px);
+  }
+}
+
+body i {
+  position: fixed;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 40px #fff,
+    0 0 80px #fff;
+  animation: animate 2s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+button {
+  border-radius: 10px;
+  padding: 10px;
+  margin: 30px;
+  z-index: 1;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 250px;
+  z-index: 1;
+
+}
+
+.card {
+  color: rgb(0, 0, 0);
+  margin-left: 10px;
+  padding: 20px;
+  font-weight: 500;
+}
+
+label {
+  margin: 10px;
+
+}
+
+#radioInputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
+}
