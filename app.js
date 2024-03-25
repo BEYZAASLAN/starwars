@@ -254,3 +254,44 @@ for (let i = 0; i < homeworldsUnique.length; i++) {
   radioInputsContainer.appendChild(label);
   radioInputsContainer.appendChild(document.createElement("br"));
 }
+/* ****************************** */
+
+function filterCharactersByHomeworld(homeworld) {
+  // Öncelikle, kart konteynerini temizleyin
+  cardContainer.innerHTML = "";
+
+  // Seçilen anavatana göre karakterleri filtreleyin
+  const filteredCharacters = charactersData.filter(character => (character.homeworld || "other").toLowerCase() === homeworld.toLowerCase());
+
+  // Filtrelenmiş karakterleri görüntülemek için renderCharacters işlevini yeniden çağırın
+  filteredCharacters.forEach(function (character) {
+    // Yeni bir div öğesi oluştur
+    const newCard = document.createElement("div");
+    // Div'e "col-lg-4" sınıfını ekle
+    newCard.classList.add("col-lg-3", "mb-4"); // col-lg-4 sınıfı eklenir
+
+    // Kartın içeriğini oluştur
+    newCard.innerHTML = `
+      <div class="card w-75 h-100 text-center">
+        <img src="${character.pic}" class="card-img-top" alt="${character.name}">
+        <div class="card-body">
+          <h5 class="card-title">${character.name}</h5>
+          <p class="card-text">Homeworld: ${character.homeworld || 'Unknown'}</p>
+        </div>
+      </div>
+    `;
+
+    cardContainer.appendChild(newCard); // Kartı konteynere yerleştir
+  });
+}
+
+
+// Radio butonlarına event listener ekle
+document.querySelectorAll('input[type="radio"][name="homeworld"]').forEach(function(radio) {
+  radio.addEventListener('change', function() {
+    if (this.checked) {
+      filterCharactersByHomeworld(this.value); // Seçilen anavatanı kullanarak karakterleri filtrele
+    }
+  });
+});
+
